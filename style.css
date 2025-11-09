@@ -1,0 +1,296 @@
+/*======================================================*/
+/* 1. RENK, FONT VE GENEL DEĞİŞKENLER */
+/*======================================================*/
+:root {
+    --primary: #1680da;  /* Ana Mavi */
+    --secondary: #2a6ef2; /* Vurgu Mavi (Hover) */
+    --accent: #24d3dd;   /* Turkuaz Vurgu (Detaylar) */
+    --dark-text: #1a1a1a;
+    --light-bg: #f7f9fc;
+    --white: #ffffff;
+    --shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: var(--dark-text);
+    background-color: var(--white);
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/*======================================================*/
+/* 2. TİPOGRAFİ VE BAŞLIKLAR */
+/*======================================================*/
+h1, h2, h3 {
+    font-weight: 800;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.2rem; text-align: center; }
+h3 { font-size: 1.5rem; }
+
+.section-title:after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent);
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+.left-aligned { text-align: left; }
+.left-aligned:after { margin: 10px 0 0 0; }
+
+/*======================================================*/
+/* 3. HEADER VE NAVİGASYON (RESPONSIVE & STICKY) */
+/*======================================================*/
+header {
+    background: var(--white);
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    z-index: 1000;
+    position: relative;
+}
+header.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    text-decoration: none;
+}
+nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+}
+nav ul li a {
+    color: var(--dark-text);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+}
+nav ul li a:hover { color: var(--secondary); }
+.active-link { color: var(--secondary) !important; font-weight: 700 !important; }
+
+/*======================================================*/
+/* 4. BUTONLAR */
+/*======================================================*/
+.btn-primary {
+    display: inline-block;
+    padding: 12px 30px; /* Buton boyutunu biraz küçülttük */
+    background: var(--primary);
+    color: var(--white) !important;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(22, 128, 218, 0.4);
+}
+.btn-primary:hover {
+    background: var(--secondary);
+    box-shadow: 0 8px 20px rgba(42, 110, 242, 0.5);
+    transform: translateY(-3px);
+}
+/* Navigasyondaki buton için özel stil */
+nav .btn-primary {
+    padding: 10px 20px;
+    margin-left: 10px;
+}
+
+/*======================================================*/
+/* 5. GENEL BÖLÜM VE SAYFA STİLLERİ */
+/*======================================================*/
+.section {
+    padding: 80px 0;
+    text-align: center;
+}
+.accent-bg {
+    background-color: var(--light-bg);
+}
+
+/* SAYFA BAŞLIĞI (Hero ve Diğer Sayfalar) */
+.page-header {
+    background: linear-gradient(45deg, var(--primary) 0%, var(--accent) 100%);
+    color: var(--white);
+    padding: 100px 0 80px;
+    text-align: center;
+}
+.page-header p {
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* ANASAYFA HERO BÖLÜMÜ GÖRSELİ */
+#hero.page-header {
+    padding: 150px 0;
+    background-image: linear-gradient(rgba(22, 128, 218, 0.8), rgba(36, 211, 221, 0.7)), 
+                      url("BURAYA_ANASAYFA_ARKA_PLAN_GORSELI.jpg"); /* <<< 1. GÖRSELİ BURAYA EKLEYİN (CSS) */
+    background-size: cover;
+    background-position: center center;
+}
+
+/* Grid Yapıları */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin: 40px auto 0;
+    text-align: left;
+}
+
+/* Kart Stili (Hizmetler) */
+.service-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+.service-card:hover {
+    box-shadow: 0 15px 30px rgba(22, 128, 218, 0.15);
+    transform: translateY(-5px);
+    border-color: var(--primary);
+}
+.icon-circle {
+    font-size: 2.5rem; color: var(--primary); margin-bottom: 15px;
+    display: inline-flex; width: 70px; height: 70px; border-radius: 50%;
+    background: rgba(36, 211, 221, 0.1); justify-content: center; align-items: center;
+}
+
+/*======================================================*/
+/* 6. GÖRSEL VE DİĞER SAYFA STİLLERİ */
+/*======================================================*/
+
+/* AYARLANMIŞ GÖRSEL SINIFI (Responsive) */
+.service-image {
+    width: 100%;
+    height: auto; 
+    border-radius: 8px;
+    object-fit: cover; 
+    box-shadow: var(--shadow);
+    max-height: 400px;
+}
+
+/* Hizmet Detayları */
+.service-row { text-align: left; align-items: center; }
+.reverse-row > *:first-child { order: 2; }
+.reverse-row > *:last-child { order: 1; }
+.list-icon { color: var(--accent); margin-right: 10px; }
+.check-list { list-style: none; margin: 20px 0; }
+.check-list li { padding: 5px 0; font-weight: 500; }
+
+/* Hakkımızda Sayfası (Takım Kartları) */
+.team-card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    padding-bottom: 20px;
+    overflow: hidden; 
+}
+.team-card img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+.team-card h4 {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    color: var(--primary);
+}
+.team-card p {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* İletişim Formu */
+#contact-form { max-width: 650px; margin: 40px auto 0; }
+#contact-form input, #contact-form textarea {
+    width: 100%; padding: 15px; margin-bottom: 20px;
+    border: 1px solid #ddd; border-radius: 8px;
+    font-family: 'Montserrat', sans-serif; font-size: 1rem; outline: none;
+}
+#contact-form input:focus, #contact-form textarea:focus {
+    border-color: var(--primary); box-shadow: 0 0 5px rgba(22, 128, 218, 0.3);
+}
+.contact-info-area { padding-left: 20px; border-left: 3px solid var(--primary); }
+
+/*======================================================*/
+/* 7. FOOTER */
+/*======================================================*/
+footer {
+    background: var(--dark-text);
+    color: #ccc;
+    padding: 30px 0;
+    font-size: 0.9rem;
+}
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.social-links a {
+    color: var(--accent);
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/*======================================================*/
+/* 8. MOBİL UYUMLULUK (MEDIA QUERIES) */
+/*======================================================*/
+@media (max-width: 900px) {
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.8rem; }
+    .section { padding: 60px 0; }
+    
+    header .container { flex-direction: column; text-align: center; }
+    nav { margin-top: 15px; }
+    nav ul { flex-direction: column; padding-left: 0; }
+    nav ul li { margin: 5px 0; }
+    nav .btn-primary { margin: 10px 0 0 0; }
+    
+    .grid-2, .grid-3 { grid-template-columns: 1fr; }
+    .service-row.reverse-row > *:first-child,
+    .service-row.reverse-row > *:last-child {
+        order: initial;
+    }
+    
+    .team-card img { height: auto; }
+    
+    footer .container { flex-direction: column; gap: 15px; }
+}
